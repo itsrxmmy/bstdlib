@@ -6,5 +6,5 @@ A library meant to work alongside the C++ Standard Library, not replace it.
 
 
 
-All contributions are welcome.
+Contributions are welcome.
 
