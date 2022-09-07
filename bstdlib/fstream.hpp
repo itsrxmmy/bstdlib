@@ -3,7 +3,7 @@
  * @file fstream.hpp
  * @author Rammy Aly
  * @brief Simple version of fstream with additional features
- * @version 1.2
+ * @version 1.4
  * @date 2022-09-06
  * 
  * @copyright Copyright (c) 2022
@@ -68,7 +68,8 @@ namespace bstd {
 			}
 
 			bool exists () {
-				return std::filesystem::exists(this->fp.c_str());
+				std::filesystem::path p{this->fp.c_str()};
+				return std::filesystem::exists(p);
 			}
 
 			void create () {
@@ -125,7 +126,7 @@ namespace bstd {
 				this->scan();
 			}
 
-			void EditLine (int num, std::string content) {
+			void edit_line (int num, std::string content) {
 				auto original = this->scan();
 				std::vector<std::string> new_;
 				for (int i=0; i<original.size(); i++) {
@@ -138,7 +139,7 @@ namespace bstd {
 				this->write(new_);
 			}
 
-			void ClearLine (int num) {
+			void clear_line (int num) {
 				auto original = this->scan();
 				std::vector<std::string> new_;
 				for (int i=0; i<original.size(); i++) {
@@ -152,11 +153,11 @@ namespace bstd {
 				this->write(new_);
 			}
 
-			void EraseLine (int num) {
+			void erase_line (int num) {
 				this->ClearLine(num);
 			}
 
-			void DeleteLine (int num) {
+			void delete_line (int num) {
 				auto original = this->scan();
 				std::vector<std::string> new_;
 				for (int i=0; i<original.size(); i++) {
@@ -167,11 +168,11 @@ namespace bstd {
 				this->write(new_);
 			}
 
-			void RemoveLine (int num) {
+			void remove_line (int num) {
 				this->DeleteLine(num);
 			}
 
-			void WriteLine (int num, std::string content) {
+			void write_line (int num, std::string content) {
 				auto original = this->scan();
 				std::vector<std::string> new_;
 				if (num==LINES_END) {
@@ -201,11 +202,11 @@ namespace bstd {
 				this->write(new_);
 			}
 
-			void Clear () {
+			void clear () {
 				this->write(STR_BLANK);
 			}
 
-			void Erase () {
+			void erase () {
 				this->Clear();
 			}
 
@@ -223,7 +224,7 @@ namespace bstd {
 				return fp_clone;
 			}
 
-			file MoveTo (std::string fp_new) {
+			file move_to (std::string fp_new) {
 				file fp_moved(fp_new);
 				fp_moved.create();
 				fp_moved.write(this->lines);
