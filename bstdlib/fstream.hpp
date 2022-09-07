@@ -3,7 +3,7 @@
  * @file fstream.hpp
  * @author Rammy Aly
  * @brief Simple version of fstream with additional features
- * @version 1.4
+ * @version 1.5
  * @date 2022-09-06
  * 
  * @copyright Copyright (c) 2022
@@ -298,8 +298,26 @@ namespace bstd {
 			std::string task = "cp " + path_str + " " + dest_str;
 			std::system(task.c_str());
 		}
+
+		bool exists (std::string path) {
+			std::filesystem::path p{path.c_str()};
+			return std::filesystem::exists(p);
+		}
+
+		bool exists (char* path) {
+			return std::filesystem::exists(p);
+		}
+
+		bool find (std::string path) {
+			return bstd::fstream::exists(path);
+		}
+
+		bool find (char* path) {
+			return bstd::fstream::exists(path);
+		}
 	}
 }
+
 
 
 
