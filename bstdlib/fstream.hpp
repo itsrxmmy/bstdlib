@@ -1,6 +1,6 @@
 
 /**
- * @file files.hpp
+ * @file fstream.hpp
  * @author Rammy Aly
  * @brief Simple version of fstream with additional features
  * @version 1.2
