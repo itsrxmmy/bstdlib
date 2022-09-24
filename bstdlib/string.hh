@@ -1,6 +1,6 @@
 
 /**
- * @file string.hpp
+ * @file string.hh
  * @author formik
  * @brief Simple version of string with additional python-like features
  * @version 0.1
